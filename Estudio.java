@@ -7,6 +7,14 @@ public class Estudio extends Carta {
     Area area;
     static Random rand = new Random();
 
+    /**
+    * Estudio:
+    * Constructor de la clase Estudio.
+    *
+    * @param nombre String: El nombre de la Carta.
+    * @param lore String: El lore de la Carta.
+    * @return void: No retorna.
+    */
     public Estudio(String nombre, String lore, TipoEstudio tipoEstudio, Area area) throws Exception {
         this.nombre = nombre;
         this.lore = lore;
@@ -45,11 +53,7 @@ public class Estudio extends Carta {
         );
     }
     
-    Integer calcularBonus() { // Cambiar a int
+    int calcularBonus() {
         return rand.nextInt(bonusMax - bonusMin + 1) + bonusMin;
-    }
-
-    Integer obtenerHoras() {
-        return horas;
     }
 }

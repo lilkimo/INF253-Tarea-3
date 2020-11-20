@@ -4,6 +4,13 @@ public class Mano {
     private ArrayList<Carta> cartas = new ArrayList<Carta>();
     private Integer limite;
 
+    /**
+    * Mano:
+    * Constructor de la clase Mano.
+    *
+    * @param limite Integer: Capacidad de la mano.
+    * @return void: No retorna.
+    */
     public Mano(Integer limite) {
         this.limite = limite;
     }
@@ -31,18 +38,30 @@ public class Mano {
             System.out.println("[WARNING] Se ha intentando añadir una carta a la mano llena.");
     }
 
-    public Carta seleccionarCarta(Integer posicion) {
-        Carta carta = cartas.remove((int)posicion);
+    public Carta seleccionarCarta(int pos) {
+        Carta carta = cartas.remove(pos);
         System.out.println("\u001B[1mSeleccionaste:\033[0m");
         carta.mostrarCarta();
         System.out.println();
         return carta;
     }
 
+    /**
+    * espacioDisponible:
+    * Indica si hay espacio disponible en la mano.
+    *
+    * @return Boolean: true para sí, flase para no.
+    */
     public Boolean espacioDisponible() {
         return (limite - cartas.size() > 0);
     }
-
+    
+    /**
+    * cantidadCartas:
+    * Indica la cantidad de cartas que hay en la mano.
+    *
+    * @return Integer: Cantidad de cartas que hay en la mano.
+    */
     public Integer cantidadCartas() {
         return cartas.size();
     }

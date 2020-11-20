@@ -2,17 +2,17 @@ import java.util.Collections;
 import java.util.LinkedList; 
 
 public class Mazo {
-    LinkedList<Carta> cartas = new LinkedList<Carta>();
+    private LinkedList<Carta> cartas = new LinkedList<Carta>();
 
-    void putBack(Carta carta) {
+    public void putBack(Carta carta) {
         cartas.addFirst(carta);
     }
 
-    Carta draw() {
+    public Carta draw() {
         return cartas.removeLast();
     }
 
-    void shuffle() {
+    public void shuffle() {
         Collections.shuffle(cartas);
     } 
 }

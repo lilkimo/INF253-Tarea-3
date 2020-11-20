@@ -4,16 +4,30 @@ import java.util.Scanner;
 public final class Juego {
     static Mazo mazoCarrera = new Mazo();
     static Mazo mazoUniversitario = new Mazo();
-    static Tablero tablero = new Tablero(12);
+    static Tablero tablero = new Tablero();
     static Integer aprobados = 0;
     static Integer reprobados = 0;
     static Mano mano = new Mano(6);
     static Scanner input = new Scanner(System.in);
 
+    /**
+    * getInput:
+    * Pide un número al usuario.
+    *
+    * @param mensaje String: El mensaje mostrado antes de hacer la solicitud.
+    * @param limite Integer: El número más alto válido.
+    * @return Integer: El número que ingresó el usuario.
+    */
     public static Integer getInput(String mensaje, Integer limite) {
         Integer opcion;
         while (true) {
             System.out.print(mensaje);
+            if (!input.hasNextInt()) {
+                System.out.println("Input no válido");
+                input.next();
+                continue;
+            }
+
             opcion = input.nextInt();
             if (opcion < 1 || opcion > limite)
                 System.out.println(opcion + " No es una opción válida");
@@ -22,10 +36,25 @@ public final class Juego {
         }
         return opcion;
     }
+    /**
+    * getInput:
+    * Pide un número al usuario.
+    *
+    * @param mensaje String: El mensaje mostrado antes de hacer la solicitud.
+    * @param limiteInferior Integer: El número más bajo válido.
+    * @param limiteSuperior Integer: EL numéro más alta válido.
+    * @return Integer: El número que ingresó el usuario.
+    */
     public static Integer getInput(String mensaje, Integer limiteInferior, Integer limiteSuperior) {
         Integer opcion;
         while (true) {
             System.out.print(mensaje);
+            if (!input.hasNextInt()) {
+                System.out.println("Input no válido");
+                input.next();
+                continue;
+            }
+            
             opcion = input.nextInt();
             if (opcion < limiteInferior || opcion > limiteSuperior)
                 System.out.println(opcion + " No es una opción válida");
@@ -77,7 +106,7 @@ public final class Juego {
         Boolean buffeado;
         while (aprobados < 4 && reprobados < 2) {
             // establecer tablero BEGINS
-            tablero.establecerHorasEstudio(12);
+            tablero.establecerHorasDisponibles(12);
             tablero.resetearBuffos();
 
             for (int i = 0; i < 2; i++) {

@@ -5,6 +5,15 @@ public class Evento extends Carta {
     Area area; // Adicional
     static Random rand = new Random();
 
+    /**
+    * Evento:
+    * Constructor de la clase Evento.
+    *
+    * @param nombre String: El nombre de la Carta.
+    * @param lore String: El lore de la Carta.
+    * @param efecto Efecto: El efecto que tiene el Evento.
+    * @return void: No retorna.
+    */
     public Evento(String nombre, String lore, Efecto efecto) throws Exception {
         this.nombre = nombre;
         this.lore = lore;
@@ -13,6 +22,16 @@ public class Evento extends Carta {
         else
             throw new Exception("[ERROR] El argumento <area> se debe declarar para el efecto Buff");
     }
+    /**
+    * Evento:
+    * Constructor de la clase Evento.
+    *
+    * @param nombre String: El nombre de la Carta.
+    * @param lore String: El lore de la Carta.
+    * @param efecto Efecto: El efecto que tiene el Evento.
+    * @param area Area: El área que afecta el Evento.
+    * @return void: No retorna.
+    */
     public Evento(String nombre, String lore, Efecto efecto, Area area) {
         this.nombre = nombre;
         this.lore = lore;
@@ -32,6 +51,7 @@ public class Evento extends Carta {
             System.out.print(" (" + area + ")");
         System.out.println();
     }
+    
     void aplicarEvento(Tablero tablero, Mazo mazoCarrera) throws Exception {
         Ramo ramo;
         switch (efecto) {

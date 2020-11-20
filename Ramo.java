@@ -1,10 +1,19 @@
 import java.util.ArrayList;
 
 public class Ramo extends Carta {
-    Integer creditos; // Humanistas 2, Informática 5, Matemática 7. Depende de area y de si hay RAV.
+    Integer creditos;
     ArrayList<Estudio> estudios = new ArrayList<Estudio>();
     Area area;
     
+    /**
+    * Ramo:
+    * Constructor de la clase Ramo.
+    *
+    * @param nombre String: El nombre de la Carta.
+    * @param lore String: El lore de la Carta.
+    * @param area Area: El área del Ramo.
+    * @return void: No retorna.
+    */
     public Ramo(String nombre, String lore, Area area) throws Exception {
         this.nombre = nombre;
         this.lore = lore;
@@ -24,8 +33,7 @@ public class Ramo extends Carta {
         }
     }
 
-    void mostrarCarta() {
-        // Se deben mostrar las cartas de Estudio encíma de esta.
+    public void mostrarCarta() {
         System.out.println(
             "Tipo: Ramo" +
             "\nNombre: " + nombre +
@@ -48,7 +56,7 @@ public class Ramo extends Carta {
         System.out.println("\u001b[1m\u001b[4mFin estudios jugados\033[0m\n");
     }
     
-    Integer calcularNota(Boolean buff) {
+    public int calcularNota(Boolean buff) {
         Float notaFinal = 0f, bonus;
         for (Estudio estudio: estudios) {
             bonus = estudio.calcularBonus() + 0f;
@@ -66,7 +74,7 @@ public class Ramo extends Carta {
             return Math.round(notaFinal - 2*creditos);
     }
     
-    void anadirEstudio(Estudio estudio) {
+    public void anadirEstudio(Estudio estudio) {
         estudios.add(estudio);
     }
 }
